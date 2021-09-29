@@ -30,11 +30,13 @@ let json_array_2 = [];
 
 const add_item_2 = (item) => { //simple function to add item
   json_array_2.push(item);
+  json_array_2.push(item);
 }
 
 const add_item_count = (max) => { //simple loop to add item
   for (let i = 0; i < max; i++) {
-    add_item_2({ a: i, b: i * 3 })
+    const _json = { a: i, b: i * 3 }
+    add_item_2(_json)
   }
 }
 
