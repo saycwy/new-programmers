@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       try {
         let c = await pool.request().query(`SELECT * FROM customer`);
 
-        res.status(200).json(c.recordset[0]);
+        res.status(200).json(c.recordset);
       } catch (error) {
         res.status(200).json([]);
       }
