@@ -27,6 +27,8 @@ const CustomerList = () => {
             <th>No</th>
             <th>Name</th>
             <th>Business Registration No</th>
+            <th>Business Registration Date</th>
+            <th>Person In Charged</th>
           </tr>
         </thead>
         <tbody>
@@ -34,6 +36,9 @@ const CustomerList = () => {
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{item.cust_name}</td>
+              <td>{item.business_reg_no}</td>
+              <td>{item.business_reg_dd}</td>
+              <td>{item.pic_name}</td>
 
             </tr>
           ))}
