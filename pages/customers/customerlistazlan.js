@@ -21,7 +21,7 @@ const CustomerList = () => {
       <h1>Customer List</h1>
       <hr></hr>
       <div>
-      <table border={1} width="100%">
+      <table border={1} width="100%" cellPadding="2px">
         <thead>
           <tr>
             <th>No</th>
