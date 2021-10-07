@@ -6,6 +6,7 @@ const CustomerList = () => {
   const router = useRouter();
   const [id, setId] = useState(0);
   const [data, setData] = useState([]);
+  const [data1, setDelete] = useState([]);
 
   useEffect(() => {
       if (router.query.id) {
@@ -17,6 +18,10 @@ const CustomerList = () => {
     _getData();
   }, [id]);
 
+  useEffect(() => {
+    _deleteData();
+  }, [id]);
+
   const _getData = async () => {
     let c = await axios.get(`/api/customer/${id}`);
     // console.log("c: ", JSON.stringify(c.data, null, 2));
@@ -26,6 +31,10 @@ const CustomerList = () => {
   }
 
   const _deleteData = async () => {
+    let d = await axios.delete(`/api/customer/${id}`);
+    if (d.statusText === "OK") {
+      setDelete(d.data);
+    }
     
   }
 
@@ -45,6 +54,16 @@ const CustomerList = () => {
         </div>
       <div>
       Customer Name: {data.cust_name}
+      <p></p>
+      </div>
+      <div> 
+        <button 
+        onClick={() => {
+          router.push("/lingchoo/customerlist");
+        }}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
