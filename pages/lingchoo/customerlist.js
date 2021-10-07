@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const CustomerList = () => {
+  const router = useRouter();
   const [list, setList] = useState([]);
   
   useEffect(() => {
@@ -14,6 +16,14 @@ const CustomerList = () => {
     if (c.statusText === "OK") {
       setList(c.data);
     }
+  };
+
+  const _goToForm = () => {
+    router.push("/customers/customerform");
+  };
+
+  const _goToDetails = (id) => {
+    router.push(`/lingchoo/${id}`);
   }
 
   return (
@@ -21,6 +31,10 @@ const CustomerList = () => {
       <h1>Customer List</h1>
       <hr></hr>
       <div>
+      <button onClick={_goToForm}>Create New</button>
+        <p></p>
+        </div>
+        <div>
       <table border={1} width="100%">
         <thead>
           <tr>
@@ -29,6 +43,7 @@ const CustomerList = () => {
             <th>Business Registration No</th>
             <th>Business Registration Date</th>
             <th>Person In Charged</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -39,6 +54,7 @@ const CustomerList = () => {
               <td>{item.business_reg_no}</td>
               <td>{item.business_reg_dd.substring(0,10)}</td>
               <td>{item.pic_name}</td>
+              <td><button onClick={() => { _goToDetails(item.id);}}>Details</button></td>
             </tr>
           ))}
         </tbody>
