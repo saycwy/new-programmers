@@ -37,9 +37,8 @@ const CustomerList = () => {
               <td>{index + 1}</td>
               <td>{item.cust_name}</td>
               <td>{item.business_reg_no}</td>
-              <td>{item.business_reg_dd}</td>
+              <td>{item.business_reg_dd.substring(0,10)}</td>
               <td>{item.pic_name}</td>
-
             </tr>
           ))}
         </tbody>
