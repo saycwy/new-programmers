@@ -1,4 +1,4 @@
-import { config } from "./db_config";
+import { config } from "../db_config";
 import sql from "mssql";
 
 export default async function handler(req, res) {
@@ -46,7 +46,7 @@ export default async function handler(req, res) {
       break;
 
     case "DELETE":
-      let c = await pool
+      let d = await pool
         .request()
         .query(`DELETE FROM customer WHERE id = ${id}`);
 

@@ -1,7 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const CustomerList = () => {
+  const router = useRouter();
   const [list, setList] = useState([]);
 
   useEffect(() => {
@@ -14,6 +16,14 @@ const CustomerList = () => {
     if (c.statusText === "OK") {
       setList(c.data);
     }
+  };
+
+  const _goToForm = () => {
+    router.push("/customers/customerform");
+  };
+
+  const _goToDetails = (id) => {
+    router.push(`/customers/${id}`);
   }
 
   return (
@@ -21,22 +31,36 @@ const CustomerList = () => {
       <h1>Customer List</h1>
       <hr></hr>
       <div>
-      <table border={1} width="100%">
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {list.map((item, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{item.cust_name}</td>
+        <button onClick={_goToForm}>Create New</button>
+        <p></p>
+      </div>
+      <div>
+        <table border={1} width="100%">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Name</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {list.map((item, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{item.cust_name}</td>
+                <td>
+                  <button
+                    onClick={() => {
+                      _goToDetails(item.id);
+                    }}
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
