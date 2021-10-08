@@ -54,7 +54,15 @@ const CustomerList = () => {
               <td>{item.business_reg_no}</td>
               <td>{item.business_reg_dd.substring(0,10)}</td>
               <td>{item.pic_name}</td>
-              <td><button onClick={() => { _goToDetails(item.id);}}>Details</button></td>
+              <td>
+                  <button
+                    onClick={() => {
+                      _goToDetails(item.id);
+                    }}
+                  >
+                    Details
+                  </button>
+                </td>
             </tr>
           ))}
         </tbody>

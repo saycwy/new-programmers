@@ -34,8 +34,7 @@ const CustomerList = () => {
     let d = await axios.delete(`/api/customer/${id}`);
     if (d.statusText === "OK") {
       setDelete(d.data);
-    }
-    
+    }  
   }
 
   return (
@@ -59,7 +58,7 @@ const CustomerList = () => {
       <div> 
         <button 
         onClick={() => {
-          router.push("/lingchoo/customerlist");
+          router.push(`lingchoo/${id}`);
         }}
         >
           Delete
