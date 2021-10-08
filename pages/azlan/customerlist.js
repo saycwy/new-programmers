@@ -22,7 +22,7 @@ const CustomerList = () => {
   };
 
   const _goToDetails = (id) => {
-    router.push(`/azlan/${id}`);
+    router.push(`/azlan/customers/${id}`);
   };
 
   return (

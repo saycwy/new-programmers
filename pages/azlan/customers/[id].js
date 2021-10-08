@@ -10,15 +10,15 @@ const CustomerList = () => {
   useEffect(() => {
     if (router.query.id) {
       setId(router.query.id);
+      _getData(router.query.id);
     }
   }, [router.query.id]);
 
-  useEffect(() => {
-    _getData();
-  }, [id]);
+  // useEffect(() => {
+  // }, [id]);
 
-  const _getData = async () => {
-    let c = await axios.get(`/api/customer/${id}`);
+  const _getData = async (cid) => {
+    let c = await axios.get(`/api/customer/${cid}`);
     // console.log("c: ", JSON.stringify(c.data, null, 2));
     if (c.statusText === "OK") {
       setData(c.data);
