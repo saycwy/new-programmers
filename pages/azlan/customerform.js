@@ -22,7 +22,7 @@ const CustomerForm = () => {
     let res = await axios.post(`/api/customers`, body);
 
     if (res.status === 200) {
-      alert(res.data);
+      router.push("/azlan/customerlist");
     } else {
       alert("Failed.");
     }

@@ -44,6 +44,10 @@ const CustomerList = () => {
         <p></p>
       </div>
       <div>Customer Name: {data.cust_name}</div>
+      <div>Business Reg No.: {data.business_reg_no}</div>
+      <div>Business Reg Date: {data.business_reg_dd}</div>
+      <div>Phone Number: {data.phone_no}</div>
+      <div>PIC Name: {data.pic_name}</div>
       <p></p>
       <button
         onClick={() => {
