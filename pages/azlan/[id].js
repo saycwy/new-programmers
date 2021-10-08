@@ -26,7 +26,10 @@ const CustomerList = () => {
   };
 
   const _deleteData = async () => {
-    await axios.delete(`/api/customer/${id}`);
+    // alert("Confirm Delete");
+    if (confirm('Confirm Delete Customer?')) {
+      await axios.delete(`/api/customer/${id}`);
+    }
   };
 
   return (
