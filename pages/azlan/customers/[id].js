@@ -26,9 +26,10 @@ const CustomerList = () => {
   };
 
   const _deleteData = async () => {
-    // alert("Confirm Delete");
-    if (confirm('Confirm Delete Customer?')) {
+    let c = confirm('Confirm Delete Customer?');
+    if (c) {
       await axios.delete(`/api/customer/${id}`);
+      router.push("/azlan/customerlist");
     }
   };
 
@@ -54,8 +55,7 @@ const CustomerList = () => {
       <p></p>
       <button
         onClick={() => {
-          _deleteData(); //add confirmation alert?
-          router.push("/azlan/customerlist");
+          _deleteData();    
         }}
       >
         Delete
