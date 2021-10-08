@@ -6,7 +6,6 @@ const CustomerList = () => {
   const router = useRouter();
   const [id, setId] = useState(0);
   const [data, setData] = useState([]);
-  const [data1, setDelete] = useState([]);
 
   useEffect(() => {
       if (router.query.id) {
@@ -16,10 +15,6 @@ const CustomerList = () => {
 
   useEffect(() => {
     _getData();
-  }, [id]);
-
-  useEffect(() => {
-    _deleteData();
   }, [id]);
 
   const _getData = async () => {
@@ -32,9 +27,6 @@ const CustomerList = () => {
 
   const _deleteData = async () => {
     let d = await axios.delete(`/api/customer/${id}`);
-    if (d.statusText === "OK") {
-      setDelete(d.data);
-    }  
   }
 
   return (
@@ -58,6 +50,7 @@ const CustomerList = () => {
       <div> 
         <button 
         onClick={() => {
+          _deleteData();
           router.push(`lingchoo/${id}`);
         }}
         >
