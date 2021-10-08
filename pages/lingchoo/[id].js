@@ -51,7 +51,8 @@ const CustomerList = () => {
         <button 
         onClick={() => {
           _deleteData();
-          router.push(`lingchoo/${id}`);
+          alert("Record deleted")
+          router.push("/lingchoo/customerlist");
         }}
         >
           Delete
