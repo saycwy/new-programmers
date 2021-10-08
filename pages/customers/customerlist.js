@@ -23,7 +23,7 @@ const CustomerList = () => {
   };
 
   const _goToDetails = (id) => {
-    router.push(`/customers/${id}`);
+    router.push(`/customers/details/${id}`);
   }
 
   return (

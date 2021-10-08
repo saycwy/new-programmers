@@ -25,7 +25,7 @@ export default async function handler(req, res) {
                       SET cust_name = @cust_name, 
                       business_reg_no = @business_reg_no, 
                       business_reg_dd = @business_reg_dd,
-                      phone_no = @body.phone_no,
+                      phone_no = @phone_no,
                       pic_name = @pic_name 
                       WHERE id = ${id}`;
 
