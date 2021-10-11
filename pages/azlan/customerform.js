@@ -67,7 +67,7 @@ const CustomerForm = () => {
           </div>
           <div>
             <p></p>
-            <button type="submit">Save/Modify</button>
+            <button type="submit">Save Client</button>
           </div>
         </form>
       </div>

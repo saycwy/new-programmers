@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 
 const CustomerList = () => {
   const router = useRouter();
   const [id, setId] = useState(0);
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+  const { register, handleSubmit, setValue } = useForm();
 
   useEffect(() => {
     if (router.query.id) {
@@ -21,15 +23,39 @@ const CustomerList = () => {
     let c = await axios.get(`/api/customer/${cid}`);
     // console.log("c: ", JSON.stringify(c.data, null, 2));
     if (c.statusText === "OK") {
-      setData(c.data);
+      // setData(c.data);
+      let cust = c.data;
+      setValue("cust_name", cust.cust_name);
+      setValue("phone_num", cust.phone_no);
+      setValue("business_reg_no", cust.business_reg_no);
+      setValue("business_reg_dd", cust.business_reg_dd.substring(0, 10));
+      setValue("pic_name", cust.pic_name);
     }
   };
 
   const _deleteData = async () => {
-    let c = confirm('Confirm Delete Customer?');
+    let c = confirm("Confirm Delete Customer?");
     if (c) {
       await axios.delete(`/api/customer/${id}`);
       router.push("/azlan/customerlist");
+    }
+  };
+
+  const onSubmit = async (data) => {
+    let body = {
+      cust_name: data.cust_name,
+      phone_num: data.phone_num,
+      business_reg_num: data.business_reg_no,
+      business_reg_dd: data.business_reg_dd,
+      pic_name: data.pic_name,
+    };
+
+    let res = await axios.put(`/api/customers/${id}`, data);
+
+    if (res.status === 200) {
+      alert(res.data);
+    } else {
+      alert("Failed");
     }
   };
 
@@ -47,19 +73,41 @@ const CustomerList = () => {
         </button>
         <p></p>
       </div>
-      <div>Customer Name: {data.cust_name}</div>
-      <div>Business Reg No.: {data.business_reg_no}</div>
-      <div>Business Reg Date: {data.business_reg_dd}</div>
-      <div>Phone Number: {data.phone_no}</div>
-      <div>PIC Name: {data.pic_name}</div>
-      <p></p>
-      <button
-        onClick={() => {
-          _deleteData();    
-        }}
-      >
-        Delete
-      </button>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <imput {...register("cust_name")} placeholder="Customer Name" />
+        </div>
+        <div>
+          <imput {...register("phone_num")} placeholder="Phone Number" />
+        </div>
+        <div>
+          <imput
+            {...register("business_reg_no")}
+            placeholder="Business Reg No"
+          />
+        </div>
+        <div>
+          <imput
+            {...register("business_reg_dd")}
+            placeholder="Business Reg Date"
+          />
+        </div>
+        <div>
+          <imput {...register("pic_name")} placeholder="PIC Name" />
+        </div>
+        <div>
+          <p></p>
+          <button type="submit">Modify</button>
+
+          <button
+            onClick={() => {
+              _deleteData();
+            }}
+          >
+            Delete
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
