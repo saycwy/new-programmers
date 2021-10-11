@@ -75,25 +75,25 @@ const CustomerList = () => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <imput {...register("cust_name")} placeholder="Customer Name" />
+          <input {...register("cust_name")} placeholder="Customer Name" />
         </div>
         <div>
-          <imput {...register("phone_num")} placeholder="Phone Number" />
+          <input {...register("phone_num")} placeholder="Phone Number" />
         </div>
         <div>
-          <imput
+          <input
             {...register("business_reg_no")}
             placeholder="Business Reg No"
           />
         </div>
         <div>
-          <imput
+          <input
             {...register("business_reg_dd")}
             placeholder="Business Reg Date"
           />
         </div>
         <div>
-          <imput {...register("pic_name")} placeholder="PIC Name" />
+          <input {...register("pic_name")} placeholder="PIC Name" />
         </div>
         <div>
           <p></p>
