@@ -16,20 +16,20 @@ const CustomerList = () => {
     }
   }, [router.query.id]);
 
-  // useEffect(() => {
-  // }, [id]);
-
   const _getData = async (cid) => {
     let c = await axios.get(`/api/customer/${cid}`);
     // console.log("c: ", JSON.stringify(c.data, null, 2));
     if (c.statusText === "OK") {
       // setData(c.data);
       let cust = c.data;
+
+
       setValue("cust_name", cust.cust_name);
-      setValue("phone_num", cust.phone_no);
+      setValue("phone_no", cust.phone_no);
       setValue("business_reg_no", cust.business_reg_no);
       setValue("business_reg_dd", cust.business_reg_dd.substring(0, 10));
       setValue("pic_name", cust.pic_name);
+
     }
   };
 
@@ -42,20 +42,22 @@ const CustomerList = () => {
   };
 
   const onSubmit = async (data) => {
+
     let body = {
       cust_name: data.cust_name,
-      phone_num: data.phone_num,
-      business_reg_num: data.business_reg_no,
+      phone_no: data.phone_no,
+      business_reg_no: data.business_reg_no,
       business_reg_dd: data.business_reg_dd,
       pic_name: data.pic_name,
     };
+//console.log(body);
 
-    let res = await axios.put(`/api/customers/${id}`, data);
-
+    let res = await axios.put(`/api/customer/${id}`, body); //api/customers adui. haha
+console.log("res: ", res);
     if (res.status === 200) {
       alert(res.data);
     } else {
-      alert("Failed");
+      alert("Failed.");
     }
   };
 
@@ -78,7 +80,7 @@ const CustomerList = () => {
           <input {...register("cust_name")} placeholder="Customer Name" />
         </div>
         <div>
-          <input {...register("phone_num")} placeholder="Phone Number" />
+          <input {...register("phone_no")} placeholder="Phone Number" />
         </div>
         <div>
           <input

@@ -63,7 +63,12 @@ const CustomerForm = () => {
             />
           </div>
           <div>
-            <input {...register("pic_name")} placeholder="Person In Charged" />
+            <select {...register("pic_name")} required>
+              <option value="">select...</option>
+              <option value="Zack">Zack</option>
+              <option value="Denis">Denis</option>
+              <option value="Juju">Juju</option>
+            </select>
           </div>
           <div>
             <p></p>
