@@ -51,7 +51,10 @@ const CustomerList = () => {
       business_reg_dd: data.business_reg_dd,
       pic_name: data.pic_name,
     };
-
+    // if data.business_reg_dd ="" {
+    //   alert("empty");
+    // }
+    
     // insert data
     let res = await axios.put(`/api/customer/${id}`, body);
 
