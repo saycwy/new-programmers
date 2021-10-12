@@ -94,15 +94,16 @@ const CustomerList = () => {
         </div>
         <div>
           <input
-            {...register("business_reg_dd", {required: true})}
-            placeholder="Business Registration Date"
+            {...register("business_reg_dd")}
+            placeholder="Business Registration Date" required
           />
         </div>
         <div>
+          person in charged: 
           <select {...register("pic_name")}>
-            <option value ="">Wong</option>
-            <option value ="">Ava</option>
-            <option value="">Alex</option>
+            <option value ="Wong">Wong</option>
+            <option value ="Ava">Ava</option>
+            <option value="Alex">Alex</option>
           </select>
         </div>
         <div>
