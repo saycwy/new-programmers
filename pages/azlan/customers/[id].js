@@ -23,13 +23,11 @@ const CustomerList = () => {
       // setData(c.data);
       let cust = c.data;
 
-
       setValue("cust_name", cust.cust_name);
       setValue("phone_no", cust.phone_no);
       setValue("business_reg_no", cust.business_reg_no);
       setValue("business_reg_dd", cust.business_reg_dd.substring(0, 10));
       setValue("pic_name", cust.pic_name);
-
     }
   };
 
@@ -42,7 +40,6 @@ const CustomerList = () => {
   };
 
   const onSubmit = async (data) => {
-
     let body = {
       cust_name: data.cust_name,
       phone_no: data.phone_no,
@@ -50,10 +47,10 @@ const CustomerList = () => {
       business_reg_dd: data.business_reg_dd,
       pic_name: data.pic_name,
     };
-//console.log(body);
+    //console.log(body);
 
     let res = await axios.put(`/api/customer/${id}`, body); //api/customers adui. haha
-console.log("res: ", res);
+    console.log("res: ", res);
     if (res.status === 200) {
       alert(res.data);
     } else {
@@ -95,7 +92,13 @@ console.log("res: ", res);
           />
         </div>
         <div>
-          <input {...register("pic_name")} placeholder="PIC Name" />
+          {/* <input {...register("pic_name")} placeholder="PIC Name" /> */}
+          <select {...register("pic_name")} required>
+            <option value="">select...</option>
+            <option value="Zack">Zack</option>
+            <option value="Denis">Denis</option>
+            <option value="Juju">Juju</option>
+          </select>
         </div>
         <div>
           <p></p>
