@@ -7,7 +7,7 @@ const CustomerList = () => {
   const router = useRouter();
   const [id, setId] = useState(0);
   // const [data, setData] = useState([]);
-  const { register, handleSubmit, setValue } = useForm();  //useForm meaning?
+  const { register, handleSubmit, setValue } = useForm();  
 
   useEffect(() => {
     if (router.query.id) {
@@ -91,12 +91,16 @@ const CustomerList = () => {
         </div>
         <div>
           <input
-            {...register("business_reg_dd")}
+            {...register("business_reg_dd", {required: true})}
             placeholder="Business Registration Date"
           />
         </div>
         <div>
-          <input {...register("pic_name")} placeholder="Person In Charged" />
+          <select {...register("pic_name")}>
+            <option value ="">Wong</option>
+            <option value ="">Ava</option>
+            <option value="">Alex</option>
+          </select>
         </div>
         <div>
           <p></p>
