@@ -63,11 +63,11 @@ const CustomerForm = () => {
             />
           </div>
           <div>
-            <select required>
+            <select {...register("pic_name")} required>
               <option value="">select...</option>
-              <option value="1">Zack</option>
-              <option value="2">Denis</option>
-              <option value="3">Juju</option>
+              <option value="Zack">Zack</option>
+              <option value="Denis">Denis</option>
+              <option value="Juju">Juju</option>
             </select>
           </div>
           <div>
