@@ -49,10 +49,11 @@ const CustomerList = () => {
       business_reg_dd: data.business_reg_dd,
       pic_name: data.pic_name,
     };
-
-    let res = await axios.put(`/api/customers/${id}`, data);
-
+//console.log(body);
+    let res = await axios.put(`/api/customers/${id}`, body);
+console.log("res: ", res);
     if (res.status === 200) {
+
       alert(res.data);
     } else {
       alert("Failed");
