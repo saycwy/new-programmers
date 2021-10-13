@@ -1,21 +1,26 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
+import { AppContext } from "../../context/appContext";
 
 const CustomerList = () => {
   const router = useRouter();
   const [list, setList] = useState([]);
+  const { getCustList } = useContext(AppContext);
 
   useEffect(() => {
     getList();
   }, []);
 
   const getList = async () => {
-    let c = await axios.get("/api/customers");
-    // console.log("c: ", JSON.stringify(c.data, null, 2));
-    if (c.statusText === "OK") {
-      setList(c.data);
-    }
+    let tmp = await getCustList();
+
+    setList(tmp);
+    // let c = await axios.get("/api/customers");
+    // // console.log("c: ", JSON.stringify(c.data, null, 2));
+    // if (c.statusText === "OK") {
+    //   setList(c.data);
+    // }
   };
 
   const _goToForm = () => {
