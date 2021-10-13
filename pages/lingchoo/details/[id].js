@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 
+const pic = ["PIC A","PIC B"];
+
 const CustomerList = () => {
   const router = useRouter();
   const [id, setId] = useState(0);
@@ -101,9 +103,12 @@ const CustomerList = () => {
         <div>
           person in charged: 
           <select {...register("pic_name")}>
-            <option value ="Wong">Wong</option>
+            {pic.map ((i) =>(
+              <option valube={i}>{i}</option>
+            ))}
+            {/* <option value ="Wong">Wong</option>
             <option value ="Ava">Ava</option>
-            <option value="Alex">Alex</option>
+            <option value="Alex">Alex</option> */}
           </select>
         </div>
         <div>
