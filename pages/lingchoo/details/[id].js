@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 
+const pic = ["PIC A","PIC B"];
+
 const CustomerList = () => {
   const router = useRouter();
   const [id, setId] = useState(0);
@@ -51,7 +53,10 @@ const CustomerList = () => {
       business_reg_dd: data.business_reg_dd,
       pic_name: data.pic_name,
     };
-
+    // if data.business_reg_dd ="" {
+    //   alert("empty");
+    // }
+    
     // insert data
     let res = await axios.put(`/api/customer/${id}`, body);
 
@@ -91,15 +96,19 @@ const CustomerList = () => {
         </div>
         <div>
           <input
-            {...register("business_reg_dd", {required: true})}
-            placeholder="Business Registration Date"
+            {...register("business_reg_dd")}
+            placeholder="Business Registration Date" required
           />
         </div>
         <div>
+          person in charged: 
           <select {...register("pic_name")}>
-            <option value ="">Wong</option>
-            <option value ="">Ava</option>
-            <option value="">Alex</option>
+            {pic.map ((i) =>(
+              <option valube={i}>{i}</option>
+            ))}
+            {/* <option value ="Wong">Wong</option>
+            <option value ="Ava">Ava</option>
+            <option value="Alex">Alex</option> */}
           </select>
         </div>
         <div>
