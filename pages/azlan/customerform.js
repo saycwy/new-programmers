@@ -15,21 +15,32 @@ const CustomerForm = () => {
     // console.log(JSON.stringify(data, null, 2));
 
     // let body = data;
-    let body = {
-      cust_name: data.cust_name,
-      phone_no: data.phone_no,
-      business_reg_no: data.business_reg_no,
-      business_reg_dd: data.business_reg_dd,
-      pic_name: data.pic_name,
-    };
-
-    // insert data
-    let res = await axios.post(`/api/customers`, body);
-
-    if (res.status === 200) {
-      router.push("/azlan/customerlist");
+    if (!data.cust_name) {
+      setError(
+        "cust_name",
+        {
+          type: "focus",
+          message: "Customer Name is Compulsory",
+        },
+        { shouldFocus: true }
+      );
     } else {
-      alert("Failed.");
+      let body = {
+        cust_name: data.cust_name,
+        phone_no: data.phone_no,
+        business_reg_no: data.business_reg_no,
+        business_reg_dd: data.business_reg_dd,
+        pic_name: data.pic_name,
+      };
+
+      // insert data
+      let res = await axios.post(`/api/customers`, body);
+
+      if (res.status === 200) {
+        router.push("/azlan/customerlist");
+      } else {
+        alert("Failed.");
+      }
     }
   };
 
@@ -51,6 +62,7 @@ const CustomerForm = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input {...register("cust_name")} placeholder="Customer Name" />
+            {errors.cust_name && <p>{errors.cust_name.message}</p>}
           </div>
           <div>
             <input {...register("phone_no")} placeholder="Phone No" />
