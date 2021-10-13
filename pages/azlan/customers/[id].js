@@ -58,6 +58,8 @@ const CustomerList = () => {
     }
   };
 
+  const picName = ["Zack", "Denis", "Juju"];
+
   return (
     <div style={{ padding: 10 }}>
       <h1>Customer Details</h1>
@@ -92,18 +94,16 @@ const CustomerList = () => {
           />
         </div>
         <div>
-          {/* <input {...register("pic_name")} placeholder="PIC Name" /> */}
           <select {...register("pic_name")} required>
-            <option value="">select...</option>
-            <option value="Zack">Zack</option>
-            <option value="Denis">Denis</option>
-            <option value="Juju">Juju</option>
+            <option value="">Select...</option>
+            {picName.map((pic) => (
+              <option value={pic}>{pic}</option>
+            ))}
           </select>
         </div>
         <div>
-          <p></p>
+          <p></p> 
           <button type="submit">Modify</button>
-
           <button
             onClick={() => {
               _deleteData();
