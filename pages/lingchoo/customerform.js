@@ -62,7 +62,7 @@ const CustomerForm = () => {
           <div>
             <input {...register("cust_name")} placeholder="Customer Name" />
             {errors.cust_name && (
-              <p style={{ color: "red" }}>{errors.cust_name.message}</p>
+              <p style={{ color: "black" }}>{errors.cust_name.message}</p>
             )}
           </div>
           <div>
