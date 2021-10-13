@@ -40,22 +40,22 @@ const CustomerList = () => {
   };
 
   const onSubmit = async (data) => {
-    let body = {
-      cust_name: data.cust_name,
-      phone_no: data.phone_no,
-      business_reg_no: data.business_reg_no,
-      business_reg_dd: data.business_reg_dd,
-      pic_name: data.pic_name,
-    };
-    //console.log(body);
+      let body = {
+        cust_name: data.cust_name,
+        phone_no: data.phone_no,
+        business_reg_no: data.business_reg_no,
+        business_reg_dd: data.business_reg_dd,
+        pic_name: data.pic_name,
+      };
+      //console.log(body);
 
-    let res = await axios.put(`/api/customer/${id}`, body); //api/customers adui. haha
-    console.log("res: ", res);
-    if (res.status === 200) {
-      alert(res.data);
-    } else {
-      alert("Failed.");
-    }
+      let res = await axios.put(`/api/customer/${id}`, body);
+      console.log("res: ", res);
+      if (res.status === 200) {
+        alert(res.data);
+      } else {
+        alert("Failed.");
+      }
   };
 
   const picName = ["Zack", "Denis", "Juju"];
@@ -94,7 +94,7 @@ const CustomerList = () => {
           />
         </div>
         <div>
-          <select {...register("pic_name")} required>
+          <select {...register("pic_name")}>
             <option value="">Select...</option>
             {picName.map((pic) => (
               <option value={pic}>{pic}</option>
@@ -102,7 +102,7 @@ const CustomerList = () => {
           </select>
         </div>
         <div>
-          <p></p> 
+          <p></p>
           <button type="submit">Modify</button>
           <button
             onClick={() => {

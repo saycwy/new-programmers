@@ -4,7 +4,12 @@ import { useRouter } from "next/router";
 
 const CustomerForm = () => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = async (data) => {
     // console.log(JSON.stringify(data, null, 2));
