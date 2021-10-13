@@ -4,12 +4,7 @@ import { useRouter } from "next/router";
 
 const CustomerForm = () => {
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors },
-  } = useForm();
+  const {register,handleSubmit,setError,formState: { errors },} = useForm();
 
   const onSubmit = async (data) => {
     // console.log(JSON.stringify(data, null, 2));
@@ -56,7 +51,7 @@ const CustomerForm = () => {
         <div>
           <button
             onClick={() => {
-              router.push("/customers/customerlist");
+              router.push("/lingchoo/customerlist");
             }}
           >
             Back
@@ -80,10 +75,11 @@ const CustomerForm = () => {
             />
           </div>
           <div>
-            <input
-              {...register("business_reg_dd")}
-              placeholder="Business Registration Date"
-            />
+              <select {...register("business_reg_dd")} required>
+                  <option value ="">Select</option>
+                  <option value ="Ava">Ava</option>
+                  <option value ="Alex">Alex</option>
+                  </select> 
           </div>
           <div>
             <input {...register("pic_name")} placeholder="Person In Charged" />

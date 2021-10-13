@@ -19,7 +19,7 @@ const CustomerList = () => {
   };
 
   const _goToForm = () => {
-    router.push("/customers/customerform");
+    router.push("/lingchoo/customerform");
   };
 
   const _goToDetails = (id) => {
