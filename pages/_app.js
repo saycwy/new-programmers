@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+// import 'antd/dist/antd.css'
 import AppContextProvider from "../context/appContext";
 
 function MyApp({ Component, pageProps }) {
