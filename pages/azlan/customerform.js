@@ -77,7 +77,7 @@ const CustomerForm = () => {
             />
           </div>
           <div>
-            <DatePicker onChange={onChange} {...register("business_reg_dd")}/>
+            <DatePicker onChange={onChange} {...register("business_reg_dd")} />
             {/* <input
               {...register("business_reg_dd")}
               placeholder="Business Registration Date"
