@@ -26,7 +26,7 @@ const CustomerList = () => {
       setValue("cust_name", cust.cust_name);
       setValue("phone_no", cust.phone_no);
       setValue("business_reg_no", cust.business_reg_no);
-      setValue("business_reg_dd", cust.business_reg_dd.substring(0, 10));
+      setValue("business_reg_dd", cust.business_reg_dd);
       setValue("pic_name", cust.pic_name);
     }
   };

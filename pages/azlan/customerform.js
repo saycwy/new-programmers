@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { DatePicker } from "antd";
 
 const CustomerForm = () => {
   const router = useRouter();
@@ -44,6 +45,8 @@ const CustomerForm = () => {
     }
   };
 
+  const onChange = () => {};
+
   return (
     <div>
       <div style={{ padding: 10 }}>
@@ -74,10 +77,11 @@ const CustomerForm = () => {
             />
           </div>
           <div>
-            <input
+            <DatePicker onChange={onChange} {...register("business_reg_dd")}/>
+            {/* <input
               {...register("business_reg_dd")}
               placeholder="Business Registration Date"
-            />
+            /> */}
           </div>
           <div>
             <select {...register("pic_name")} required>
