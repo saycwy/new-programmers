@@ -1,6 +1,7 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { DatePicker } from "antd";
 
 const CustomerForm = () => {
   const router = useRouter();
@@ -8,6 +9,7 @@ const CustomerForm = () => {
     register,
     handleSubmit,
     setError,
+    control,
     formState: { errors },
   } = useForm();
 
@@ -80,10 +82,22 @@ const CustomerForm = () => {
             />
           </div>
           <div>
-            <input
+            <Controller
+              control={control}
+              name="business_reg_dd"
+              render={(props) => (
+                <DatePicker
+                  // value={moment(props.field.value)} // DatePicker accepts a moment object
+                  onChange={(_, dateString) => {
+                    props.field.onChange(dateString); // No need of a state
+                  }}
+                />
+              )}
+            />
+            {/* <input
               {...register("business_reg_dd")}
               placeholder="Business Registration Date"
-            />
+            /> */}
           </div>
           <div>
             <input {...register("pic_name")} placeholder="Person In Charged" />
