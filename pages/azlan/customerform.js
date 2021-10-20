@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { DatePicker } from "antd";
@@ -9,11 +9,12 @@ const CustomerForm = () => {
     register,
     handleSubmit,
     setError,
+    control,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
-    // console.log(JSON.stringify(data, null, 2));
+    console.log(JSON.stringify(data, null, 2));
 
     // let body = data;
     if (!data.cust_name) {
@@ -77,14 +78,10 @@ const CustomerForm = () => {
             />
           </div>
           <div>
-            <DatePicker onChange={onChange} {...register("business_reg_dd")} />
-            {/* <input
-              {...register("business_reg_dd")}
-              placeholder="Business Registration Date"
-            /> */}
+            {/* date picker */}
           </div>
           <div>
-            <select {...register("pic_name")} required>
+            <select {...register("pic_name")}>
               <option value="">select...</option>
               <option value="Zack">Zack</option>
               <option value="Denis">Denis</option>
