@@ -78,7 +78,17 @@ const CustomerForm = () => {
             />
           </div>
           <div>
-            {/* date picker */}
+            <Controller
+              control={control}
+              name="business_reg_dd"
+              render={(props) => (
+                <DatePicker
+                  onChange={(_, dateString) => {
+                    props.field.onChange(dateString);
+                  }}
+                />
+              )}
+            />
           </div>
           <div>
             <select {...register("pic_name")}>
