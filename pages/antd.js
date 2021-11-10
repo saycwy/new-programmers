@@ -1,17 +1,20 @@
-import { Button, Space, DatePicker, Card, Layout } from "antd";
+import { Button, Space, DatePicker, Layout, Typography } from "antd";
 import { CiCircleFilled } from "@ant-design/icons";
 
 export default function AntdPage() {
   const onChange = () => {};
 
   const { Sider, Footer, Content, Header } = Layout;
+  const { Title } = Typography;
 
   return (
     <>
       <Layout style={{ height: "100vh" }}>
-        <Sider style={{ backgroundColor: "gainsboro" }}>Sider</Sider>
+        <Sider style={{ backgroundColor: royalblue}}>Sider</Sider>
         <Layout>
-          <Header style={{ backgroundColor: "blueviolet" }}>Header</Header>
+          <Header>
+            <Title type="secondary">Header</Title>
+          </Header>
           <Content>
             <div style={{ padding: 30 }}>
               <Space direction="vertical">
